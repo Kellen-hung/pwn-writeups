@@ -14,8 +14,7 @@ input 輸入 %p 可以顯示 stack 裡的資料
 
 ## 看 flag function ,得知需要將banana改為 0x3132000a
 
-![image](https://hackmd.io/_uploads/S1AynRqXkl.png)
-
+<img width="612" height="436" alt="image" src="https://github.com/user-attachments/assets/e68d1ad2-5a1d-4119-8ec7-6857e396fd52" />
 
 ## 使用 GDB 找 banana 位置
 ~~觀察在 main function 裡面跑 banana = 1 時的位置~~
@@ -24,8 +23,7 @@ input 輸入 %p 可以顯示 stack 裡的資料
 待確認：因為 banana 在宣告時就被 assign 為 1，在 main 裡沒紀錄 banana 的位置，因此需要確認 choice 的位置然後 +4 才是 banana 的位置
 找時間自己寫程式確認!!
 
-![image](https://hackmd.io/_uploads/BkjvjA57Je.png)
-
+<img width="922" height="327" alt="image" src="https://github.com/user-attachments/assets/cf647b43-14a8-4164-a09e-125b5304da9d" />
 
 ## 在 function program 裡可進行 Format String Exploit
 
@@ -45,7 +43,8 @@ AAAABBBBCCCC
 -> **此題 temp 為 esp 後的第七個參數($7)**
 
 ## 構建 payload
-![image](https://hackmd.io/_uploads/rJoZR0c71e.png)
+<img width="398" height="155" alt="image" src="https://github.com/user-attachments/assets/abf906dc-d46d-4ec7-b738-030a76b2ef1e" />
+
 意思為: 將 banana addr 以及 banana_addr + 2 寫進 temp 裡，此時 banana_addr 為 $7，banana_addr + 2 為 $8，利用 %c 以及 %hn 的組合進行記憶體寫入
 
 %10000c 為輸出 10000 個字元
