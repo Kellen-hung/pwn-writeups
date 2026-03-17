@@ -20,6 +20,7 @@ This repository contains my binary exploitation writeups and exploit scripts fro
 
 ## Tools
 
+- vscode
 - pwntools
 - gdb / pwndbg
 - libc database
