@@ -120,8 +120,10 @@ int __cdecl beat(int description, int boss_hp)
 1. 可以看到武器攻擊力取決於武器的 description 的長度
 2. 問題出在 strncat, 這個函數接起來後會在字串最後面放 '\x00'
 3. 在 GDB 可以看到 description 後面緊接的就是武器攻擊力, 如下
-    ![image](https://hackmd.io/_uploads/rJnaSx3Tkx.png)
-4. 在 strncat 指定的 size 也是藉由武器攻擊力 (description長度) 決定
-5. 為何會覆寫此值？, strncat 會先將他變為 \x00, 然後再加 power_up 寫入的 description 的長度, 所以如果是 47+1 的 case 下, 攻擊力會變成 1
-6. 如此一來因為長度在記憶體裡面被覆寫成1, 呼叫 power_up 就能再繼續寫下去, 前 3 byte 寫為 \xff\xff\xff, 這樣攻擊力就會遠大於 boss_hp
-7. 然後繼續寫下去直到 return address, leak 出 libc_base 然後跳回 main 再執行一次呼叫 system('/bin/sh') 就好 (one_gadget 也可以)
+   
+    <img width="986" height="262" alt="image" src="https://github.com/user-attachments/assets/0318d7cb-2e71-4617-8f54-e54283d94e45" />
+
+5. 在 strncat 指定的 size 也是藉由武器攻擊力 (description長度) 決定
+6. 為何會覆寫此值？, strncat 會先將他變為 \x00, 然後再加 power_up 寫入的 description 的長度, 所以如果是 47+1 的 case 下, 攻擊力會變成 1
+7. 如此一來因為長度在記憶體裡面被覆寫成1, 呼叫 power_up 就能再繼續寫下去, 前 3 byte 寫為 \xff\xff\xff, 這樣攻擊力就會遠大於 boss_hp
+8. 然後繼續寫下去直到 return address, leak 出 libc_base 然後跳回 main 再執行一次呼叫 system('/bin/sh') 就好 (one_gadget 也可以)
