@@ -23,16 +23,9 @@ This repository contains my binary exploitation (pwn) writeups and exploit scrip
 - libc database  
 - VS Code  
 
-## Featured Writeups
-
-- babystack 
-- secret_garden (heap exploitation)  
-- bookwriter (heap exploitation)  
-- death_note (ROP)  
-
 ## Repository Structure
 
 Each challenge directory contains:
 
 - `writeup.md`: detailed analysis  
-- `exploit.py`: exploit script using pwntools  
+- `exploit.py`: exploit script using pwntools 
