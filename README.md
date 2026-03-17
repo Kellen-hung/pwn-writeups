@@ -1,26 +1,38 @@
 # Binary Exploitation Writeups
 
-This repository contains my binary exploitation writeups and exploit scripts from various CTF platforms.
+This repository contains my binary exploitation (pwn) writeups and exploit scripts.
 
-## Platforms
+## Overview
 
-- pwnable.tw
-- picoCTF
-- CTFlearn
-- BambooFox CTF
+- Solved 30+ binary exploitation challenges  
+- Platforms: pwnable.tw, picoCTF, CTFlearn, BambooFox  
+- Focus on vulnerability analysis and exploit development  
 
 ## Topics Covered
 
-- Stack overflow
-- Return-Oriented Programming (ROP)
-- Heap exploitation
-- GOT overwrite
-- libc leak
-- pwntools scripting
+- Stack overflow  
+- Return-Oriented Programming (ROP)  
+- Heap exploitation (tcache, fastbin, unsorted bin)  
+- GOT overwrite  
+- libc leak  
 
 ## Tools
 
-- vscode
-- pwntools
-- gdb / pwndbg
-- libc database
+- pwntools  
+- gdb / pwndbg  
+- libc database  
+- VS Code  
+
+## Featured Writeups
+
+- babystack (stack overflow)  
+- secret_garden (heap exploitation)  
+- bookwriter (heap exploitation)  
+- death_note (ROP)  
+
+## Repository Structure
+
+Each challenge directory contains:
+
+- `writeup.md`: detailed analysis  
+- `exploit.py`: exploit script using pwntools  
