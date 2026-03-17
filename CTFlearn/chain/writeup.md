@@ -63,7 +63,9 @@ puts = u64(p.recv(6).ljust(8, b"\x00"))
 ```
 大概就是 puts(*puts@got.plt) 的概念, 找出 puts 跟 read 的真實 address 後丟進 [libc database](https://libc.blukat.me/) 尋找 libc 版本
 以 server 端為例, puts = 0x7b119fed75a0, read = 0x7c2484665130, 拿後 3bits 去查
-![螢幕擷取畫面 2025-02-25 150531](https://hackmd.io/_uploads/H10ynJicJx.png)
+
+<img width="1196" height="635" alt="image" src="https://github.com/user-attachments/assets/cd9dc6de-a51c-4269-ada4-74e719260dd9" />
+
 就能知道 server 的 libc 版本以及 system 和 /bin/sh 對應的 offset
 
 2. 有了 system 跟 /bin/sh 的位置之後, 就能 ROP ret2libc 了
