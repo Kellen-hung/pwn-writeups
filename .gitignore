@@ -5,5 +5,7 @@ __pycache__/
 *.tmp
 *.out
 *.core
+*.so.6
+*.so
 .gdb_history
 flag
