@@ -190,7 +190,9 @@ unsigned int print_note()
     system = puts - libc.sym['puts'] + libc.sym['system']
     ```
 4. code 中的 1234 代表 GDB x/wx 中的行數, 因方便觀察, 示意圖如下:
-    ![image](https://hackmd.io/_uploads/BkpNNknTJl.png)
+5. 
+    <img width="977" height="161" alt="image" src="https://github.com/user-attachments/assets/70bf2ea7-2764-485a-b2f4-639f4f4be586" />
+
     第 1 跟 3 是準備要覆寫的地方, 因最多只能 add 5 個 note, 所以需要搭配 fastbin 裡的情況排列組合且搭配自製 size 弄出 -> 寫 data 的地方剛好是前面 free 掉的 note 的 puts_note 的地方, 這樣就可以呼叫 puts(puts_got)
-5. code 中 # 後面為 size = 0x8 的 fastbin 裡面的情況
-6. 有 system address 後就可以覆寫 puts_note 跟後面的 data address 進行 system(';sh;')
+6. code 中 # 後面為 size = 0x8 的 fastbin 裡面的情況
+7. 有 system address 後就可以覆寫 puts_note 跟後面的 data address 進行 system(';sh;')
