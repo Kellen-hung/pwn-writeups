@@ -4,12 +4,13 @@
 IDA 反組譯得知 symbol table 被拔掉... 什麼函數都不知道在哪, 都只看的到 address (gdb 不能直接 b main 超級麻煩)
 
 首要目標一定是先找出 main, 在 IDA 搜尋 mov     rdi, offset, 有這條指令的 function 就是 start function
-![image](https://hackmd.io/_uploads/rJvYb3phkl.png)
+<img width="588" height="255" alt="image" src="https://github.com/user-attachments/assets/e512d5dc-5885-4b3f-8276-032cad50bc3f" />
 
 然後 r8 那個是 __libc_csu_init, rcx 是 __libc_csu_init, 因為後面用的到所以順便寫出來
 
 #### main
-![image](https://hackmd.io/_uploads/BypkG36hkl.png)
+<img width="565" height="312" alt="image" src="https://github.com/user-attachments/assets/39f653d0-2c7d-4d1c-890d-a9b070520750" />
+
 
 改完變數函數名字後長這樣, 看起來就是個任意寫入
 
