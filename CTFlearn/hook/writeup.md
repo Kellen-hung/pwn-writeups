@@ -112,17 +112,27 @@ int main(void){
 ### solution
 
 1. 先 malloc 兩個 chunk, 為什麼要兩個？因為到時候要把 __free_hook 的位置從 tcache 取出來, 如果只 malloc 一個, 後面要 malloc 第二次的時候系統會認為 tcache 已經沒東西, 導致她直接再從 heap 切一個 chunk 給你
-![image](https://hackmd.io/_uploads/r12Gc9Wh1x.png)
+
+<img width="1359" height="235" alt="image" src="https://github.com/user-attachments/assets/62b49c69-cb8f-43cf-be35-4c295c44c379" />
+
 圖中第一個 chunk 為 tache base (source code 裡名字為 key), 第四個是 top chunk
 2. 把這兩個 chunk free 掉, 這樣 tcache count = 2
-![image](https://hackmd.io/_uploads/SkOPc5b2yx.png)
+
+<img width="1458" height="493" alt="image" src="https://github.com/user-attachments/assets/7d616672-0e65-485a-b074-a4adf6d5fab4" />
+
 3. 修改 chunk[1] 的 fd 為 __free_hook address (一定要 [1], 不然 __free_hook 又會跑到 tcache 的尾巴導致 malloc 取不出來)
-![image](https://hackmd.io/_uploads/By7Us5W3kx.png)
+
+<img width="1330" height="224" alt="image" src="https://github.com/user-attachments/assets/ed7ef73a-ea35-43ab-b1ab-d982c2a922bd" />
+
 可以看到第三個 chunk 的 fd 值是 __free_hook 的 address 了
-![image](https://hackmd.io/_uploads/S1sis9Wn1l.png)
+
+<img width="1444" height="444" alt="image" src="https://github.com/user-attachments/assets/deba30ee-cafe-463d-90fa-50247763188a" />
+
 tcache bin 的第二個 chunk 變成 __free_hook
 4. 再來 malloc 兩次把 __free_hook malloc 出來並把他寫入 system 的 address (tcache bin 是 LIFO)
-![image](https://hackmd.io/_uploads/S19FacZ3ye.png)
+
+<img width="789" height="219" alt="image" src="https://github.com/user-attachments/assets/61cbdb52-4720-4d4d-913b-d8868f4b5d07" />
+
 5. 再 malloc 一塊 chunk 讓它的 data 是 /bin/sh 字串, 然後 call free 就成功執行 shell 了!!!
 
 p.s. 我一開始只 malloc 一個, 然後一直沒辦法把 __free_hook 從 tcache 拿出來, 中風
