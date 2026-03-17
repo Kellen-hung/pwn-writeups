@@ -1,10 +1,10 @@
 第14行+6為了跳過這三行 (0d是CR字元)
-![image](https://hackmd.io/_uploads/ryoCayc7yl.png)
 
+<img width="644" height="100" alt="image" src="https://github.com/user-attachments/assets/5c388b59-4b1b-48af-8603-2f72f267ba3c" />
 
 架構圖
-![image](https://hackmd.io/_uploads/ryNTpk5mkg.png)
 
+<img width="509" height="458" alt="image" src="https://github.com/user-attachments/assets/414ede89-4682-4e3e-bd07-c8cf7327eb4e" />
 
 ## 知識點
 1. strlen()遇到 \x00 會停
