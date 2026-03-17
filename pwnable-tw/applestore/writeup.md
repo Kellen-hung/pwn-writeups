@@ -200,7 +200,7 @@ unsigned int checkout()
     ```
 2. 在 checkout 可以看到如果消費總額剛好為 7174 元, 會送你一台 1$ 的 iPhone 8, 但這個 iPhone 8 的 node 沒有 malloc, 而是在 stack 上的 local variable 並串接在 myCart 的 double-linked list 上
 3. 第一點情況會導致一旦 stack 資料被覆蓋的話程式會壞掉, 如果另一個 function 剛好可以在位置進行輸入, 則因為有 printf(node->name), 造成任意讀取, 這隻程式就有這個問題, 示意圖如下
-    ![image](https://hackmd.io/_uploads/Syi_y-na1l.png)
+    <img width="602" height="973" alt="image" src="https://github.com/user-attachments/assets/07d204cd-bfe0-429c-8f2b-42fc941c761b" />
     可以看到在 delete function 下, input 可以完美覆蓋iPhone 8 的所有資料
 
 ### solution
