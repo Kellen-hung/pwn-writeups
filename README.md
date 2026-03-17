@@ -25,7 +25,7 @@ This repository contains my binary exploitation (pwn) writeups and exploit scrip
 
 ## Featured Writeups
 
-- babystack (stack overflow)  
+- babystack 
 - secret_garden (heap exploitation)  
 - bookwriter (heap exploitation)  
 - death_note (ROP)  
