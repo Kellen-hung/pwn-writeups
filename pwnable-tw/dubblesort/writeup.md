@@ -101,8 +101,10 @@ unsigned int __cdecl sort(unsigned int *nums_ptr, int size)
 ### solution
 
 1. 先找 name 記憶體裡面有用的資訊進行 leak
-![image](https://hackmd.io/_uploads/BJh_Pjzpyx.png)
-![image](https://hackmd.io/_uploads/ByacDjM61g.png)
+   
+<img width="974" height="134" alt="image" src="https://github.com/user-attachments/assets/b617b8cd-5480-4058-9d9b-894cc0818b44" />
+<img width="990" height="749" alt="image" src="https://github.com/user-attachments/assets/4ccf6173-4645-4e02-a0f4-76fcba1f2664" />
+
 0xf7f82000 是 .got.plt 的初始 address, 利用
 ```
 readelf -S ./libc_32.so.6 | grep '.got.plt'
