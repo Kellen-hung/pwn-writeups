@@ -3,7 +3,8 @@
 
 ## 題目一開始有限制 max_len = 20 bytes
 因為會導致input不夠用，所以利用 BOF 將 max_len 覆蓋成 0xff
-![image](https://hackmd.io/_uploads/rJ5K_KlN1l.png)
+
+<img width="611" height="204" alt="image" src="https://github.com/user-attachments/assets/65c105c8-0983-4e1c-9a12-ede7fc07701c" />
 
 ## 接下來要取得 puts 函數的 address 並且返回 main 原點重新開始 (ROP)
 在 main 函數 ret 回 puts@plt (搭配參數 puts@got.plt)
@@ -20,11 +21,12 @@
 
 -> 因此 puts(puts@got.plt) 會將 puts address leak 出來
 
-![image](https://hackmd.io/_uploads/S1PQ-cgNyl.png)
+<img width="928" height="281" alt="image" src="https://github.com/user-attachments/assets/02f8892c-fdd3-4194-baac-e2b45c20c130" />
 
 ## 跑第二輪 main function
 進行 ret2libc，將第一個 buf 填入 /bin/sh 後 call system
-![image](https://hackmd.io/_uploads/HJBfGcxNye.png)
+
+<img width="834" height="353" alt="image" src="https://github.com/user-attachments/assets/feb46083-600c-41cb-8c6d-216c5645cf28" />
 
 ## 問題
 我用自己的電腦開伺服器 leak 不出 puts 的 address，但連上題目指定的 ip port 就可以，找不出原因
